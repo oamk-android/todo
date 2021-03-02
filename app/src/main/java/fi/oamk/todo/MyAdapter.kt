@@ -5,10 +5,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import fi.oamk.todo.Model.Task
 
 // Adapter class provides data to RecyclerView. All methods are called by the layout manager when needed (so you
 // do not call these by yourself).
-class MyAdapter(private val myDataset: ArrayList<String>) : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
+class MyAdapter(private val myDataset: ArrayList<Task>) : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
     // Create new view (rows). This is invoked by layout manager.
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyAdapter.MyViewHolder {
         val myView = LayoutInflater.from(parent.context)
@@ -18,7 +19,7 @@ class MyAdapter(private val myDataset: ArrayList<String>) : RecyclerView.Adapter
 
     // Place data to row template (task_row.xml).
     override fun onBindViewHolder(holder: MyAdapter.MyViewHolder, position: Int) {
-        holder.task.text = myDataset.get(position)
+        holder.task.text = myDataset.get(position).name
     }
 
     // Return size of the dataset providing data for RecyclerView.
